@@ -20,16 +20,16 @@ npx hexo new "文章标题"
 
 ## 部署上线
 
-1. 在 GitHub 创建仓库，名字必须是 `itsusheng.github.io`，设为 Public，**不要**勾选初始化 README。
-2. 在本目录执行（把 `YOUR_TOKEN` 换成你的 GitHub Personal Access Token，需勾选 `repo` 权限）：
+1. 仓库已创建：`tekikoyo/tekikoyo.github.io`（Public，空仓库）。
+2. 在本目录执行，推送时弹出的登录窗口用 GitHub 账号授权即可（凭据管理器已配置好，不用手动建 token）：
 
 ```bash
-git remote add origin https://github.com/itsusheng/itsusheng.github.io.git
+git remote add origin https://github.com/tekikoyo/tekikoyo.github.io.git
 git push -u origin main
 ```
 
 3. 推送后 GitHub Actions 会自动构建并部署到 `gh-pages` 分支。
 4. 到仓库 **Settings → Pages → Build and deployment**，Source 选择 **Deploy from a branch**，Branch 选 `gh-pages` / `/ (root)`，保存。
-5. 访问 `https://itsusheng.github.io`。
+5. 访问 `https://tekikoyo.github.io`。
 
-> 说明：Personal Access Token 在 GitHub → Settings → Developer settings → Personal access tokens → Tokens (classic) 生成。推送时密码框粘贴 token（不是账号密码）。
+> 如果推送时没有弹出登录窗口，可改用 Personal Access Token：GitHub → Settings → Developer settings → Personal access tokens → Tokens (classic)，勾选 `repo` 权限生成，推送时密码框粘贴 token（不是账号密码）。

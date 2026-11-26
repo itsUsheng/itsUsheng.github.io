@@ -37,12 +37,12 @@ git push origin main
 
 ## 部署上线
 
-1. 账号：`tekikoyo`（其显示名是 Usheng）。`usheng` 和 `teki` 已被他人占用、GitHub 不释放，故采用 `itsusheng`（空闲可用）。
-2. 把账号名从 `tekikoyo` 改成 `itsusheng`（GitHub → Settings → Account → Username → 改成 `itsusheng` → Save）。仓库名 `itsusheng.github.io` 不用动，会自动跟着账号走，并自动成为用户主页仓库，网址即 `https://itsusheng.github.io`。
-3. 改名后在本目录执行，更新远程地址并推送（GitHub 会自动重定向旧地址，但建议更新成新地址）：
+1. 账号：`itsUsheng`（由 `tekikoyo` 改名而来；`usheng`/`teki` 已被占用且 GitHub 不释放，故选用 `itsUsheng`）。
+2. 仓库：`itsUsheng/itsUsheng.github.io`（Public，用户主页仓库）。GitHub 用户名和仓库名大小写不敏感，网址统一用小写 `https://itsusheng.github.io`。
+3. 在本目录更新远程地址并推送（GitHub 会自动重定向旧地址）：
 
 ```bash
-git remote set-url origin https://github.com/itsusheng/itsusheng.github.io.git
+git remote set-url origin https://github.com/itsUsheng/itsUsheng.github.io.git
 git push -u origin main
 ```
 
@@ -68,6 +68,6 @@ git push -u origin main
 |---|---|---|
 | `fatal: not a git repository: '...PortableGit'` | 有脚本设置了保留变量 GIT_DIR | 见坑 2，脚本已内置清除 |
 | `CONNECT tunnel failed 502` / `Could not resolve host` | 代理没开或端口不对 | 开科学上网工具，核对端口 7897 |
-| `Repository not found` | 远程地址/仓库名不对 | `git remote -v` 核对是否为 `itsusheng/itsusheng.github.io` |
+| `Repository not found` | 远程地址/仓库名不对 | `git remote -v` 核对是否为 `itsUsheng/itsUsheng.github.io` |
 | `nothing to commit` | 没有新改动（不是错误） | 属正常，不影响 push，可忽略 |
 | 卡住不动 | 在等 GitHub 授权窗口 | 看任务栏，点开窗口授权一次 |

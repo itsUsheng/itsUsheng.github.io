@@ -9,6 +9,13 @@ echo           Blog One-Click Publisher
 echo  ==================================================
 echo.
 
+rem === Defensive: clear Git reserved env vars (they can break git commands) ===
+rem === Lesson: never name our own variable GIT_DIR / GIT_WORK_TREE / GIT_INDEX_FILE ===
+set "GIT_DIR="
+set "GIT_WORK_TREE="
+set "GIT_INDEX_FILE="
+set "GIT_CONFIG="
+
 set "NODE_DIR=C:\Users\zhaihaoyu\.workbuddy\binaries\node\versions\22.22.2-6"
 set "PGROOT=C:\Users\zhaihaoyu\AppData\Local\Programs\WorkBuddy\resources\vendor\PortableGit"
 set "GIT_CMD=%PGROOT%\cmd"

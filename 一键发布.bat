@@ -13,8 +13,8 @@ set "NODE_DIR=C:\Users\zhaihaoyu\.workbuddy\binaries\node\versions\22.22.2-6"
 set "GIT_DIR=C:\Users\zhaihaoyu\AppData\Local\Programs\WorkBuddy\resources\vendor\PortableGit"
 set "GIT_CMD=%GIT_DIR%\cmd"
 set "GIT_BIN=%GIT_DIR%\mingw64\bin"
+set "GIT_EXE=%GIT_CMD%\git.exe"
 set "PROXY=http://127.0.0.1:7897"
-set "PROXY_PORT=7897"
 set "BLOG_DIR=C:\Users\zhaihaoyu\WorkBuddy\2026-11-25-15-02-10\hexo-blog"
 set "SCRIPT_DIR=%~dp0"
 
@@ -37,13 +37,19 @@ echo  Folder OK
 echo.
 
 echo [4/4] Committing and pushing...
-git add -A
-if errorlevel 1 goto fail
-git commit -m "post: %date% %time%"
-git push origin main
-if errorlevel 1 goto fail
-
+echo  (If a GitHub login window pops up, click it to authorize)
 echo.
+"%GIT_EXE%" add -A
+"%GIT_EXE%" commit -m "post: %date% %time%"
+echo.
+echo  ===== upload details (real errors appear here) =====
+"%GIT_EXE%" -c http.proxy=%PROXY% push origin main
+set "PUSH_CODE=%ERRORLEVEL%"
+echo  ===== upload finished =====
+echo.
+
+if not "%PUSH_CODE%"=="0" goto fail
+
 echo  ==================================================
 echo    SUCCESS! Wait 1-2 minutes, then visit:
 echo    https://tekikoyo.github.io/itsusheng.github.io/
@@ -54,11 +60,12 @@ goto end
 :fail
 echo.
 echo  ==================================================
-echo    FAILED. Check in order:
-echo    1. VPN/proxy is ON (port 7897)
-echo    2. GitHub login window - click and authorize
-echo    3. Network connection
-echo    Fix it and double-click this script again
+echo    FAILED - the real error is shown ABOVE.
+echo    Common causes:
+echo    1. Proxy OFF - start your VPN tool (port 7897)
+echo    2. GitHub login window - click it to authorize
+echo    3. No internet connection
+echo    Fix it, then double-click this script again.
 echo  ==================================================
 echo.
 

@@ -10,13 +10,34 @@ npm run server       # 本地预览 http://localhost:4000
 npm run build        # 生成静态文件到 public/
 ```
 
-## 写文章
+## 日常发布流程（每天用这个）
+
+1. **写文章**：在项目目录执行
+   ```bash
+   npx hexo new "文章标题"
+   ```
+   编辑 `source/_posts/文章标题.md`，开头有 `title/date/tags/categories` 等字段，正文用 Markdown 写。
+
+2. **本地预览**（可选）：
+   ```bash
+   npx hexo server
+   ```
+   打开 `http://localhost:4000` 看效果，满意后按 `Ctrl+C` 停止。
+
+3. **一键发布**：双击项目根目录的 **`publish.bat`**，它会自动提交并把代码推到 GitHub。推送时如弹出 GitHub 登录窗口，授权一次即可（之后记住）。
+
+4. **等 1–2 分钟**，访问 `https://tekikoyo.github.io/itsusheng.github.io/` 就能看到新文章。构建和部署由 GitHub Actions 自动完成，无需手动 `hexo g` 或 `hexo d`。
+
+> 注意：脚本里固定走了本机代理 `127.0.0.1:7897`（你的科学上网工具），用脚本前请确保代理已开启。若代理端口变了，用记事本打开 `publish.bat` 修改里面的 `7897`。
+
+## 手动发布（不用脚本时）
 
 ```bash
-npx hexo new "文章标题"
+git add -A
+git commit -m "post: 今天学了什么"
+git push origin main
 ```
-
-编辑 `source/_posts/` 下生成的 Markdown 文件，然后本地预览确认效果。
+手动推时同样需要先开代理；如果在普通 cmd 里敲 `git` 提示找不到命令，是因为 Git 没加入 PATH，用脚本则无此问题。
 
 ## 部署上线
 

@@ -59,7 +59,7 @@ if not "%PUSH_CODE%"=="0" goto fail
 
 echo  ==================================================
 echo    SUCCESS! Wait 1-2 minutes, then visit:
-echo    https://tekikoyo.github.io/itsusheng.github.io/
+echo    https://itsusheng.github.io/
 echo  ==================================================
 echo.
 goto end

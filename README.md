@@ -18,13 +18,13 @@ npm run build        # 生成静态文件到 public/
    脚本会自动在 `source/_posts/` 建好一个 `.md` 文件，标题、日期、标签、分类都填好，并自动用记事本打开。
 2. **在记事本里写正文**（最上面 `---` 之间的是文章信息，别乱动），写完按 `Ctrl+S` 保存，关掉记事本。
 3. **双击桌面「一键发布博客.bat」** → 出现 `SUCCESS!` 即成功。如弹出 GitHub 登录窗口，点开授权一次即可。
-4. **等 1–2 分钟**，刷新 `https://tekikoyo.github.io/itsusheng.github.io/` 就能看到新文章。
+4. **等 1–2 分钟**，刷新 `https://itsusheng.github.io` 就能看到新文章。
 
 > **这个博客没有网页后台**（不像 WordPress 那样登录网址写文章）。更新内容就是改 `source/_posts/` 里的 `.md` 文件，再通过脚本传上 GitHub，全程在电脑上完成。
 >
 > 注意：发布脚本固定走本机代理 `127.0.0.1:7897`（科学上网工具），用前请先开启；端口变了用记事本改 `publish.bat` 里的 `7897`。
 >
-> 命令行老手也可以不用脚本：`npx hexo new "标题"` 建文章，`npx hexo server` 本地预览 `http://localhost:4000/itsusheng.github.io/`。构建部署由 GitHub Actions 自动完成，无需手动 `hexo g`/`hexo d`。
+> 命令行老手也可以不用脚本：`npx hexo new "标题"` 建文章，`npx hexo server` 本地预览 `http://localhost:4000/`。构建部署由 GitHub Actions 自动完成，无需手动 `hexo g`/`hexo d`。
 
 ## 手动发布（不用脚本时）
 
@@ -37,17 +37,17 @@ git push origin main
 
 ## 部署上线
 
-1. 仓库已创建：`tekikoyo/tekikoyo.github.io`（Public，空仓库）。
+1. 仓库：`itsusheng/itsusheng.github.io`（Public，用户主页仓库）。账号改名 tekikoyo → itsusheng 后，原仓库 `itsusheng.github.io` 自动成为用户主页仓库，网址即 `https://itsusheng.github.io`。
 2. 在本目录执行，推送时弹出的登录窗口用 GitHub 账号授权即可（凭据管理器已配置好，不用手动建 token）：
 
 ```bash
-git remote add origin https://github.com/tekikoyo/tekikoyo.github.io.git
+git remote set-url origin https://github.com/itsusheng/itsusheng.github.io.git
 git push -u origin main
 ```
 
 3. 推送后 GitHub Actions 会自动构建并部署到 `gh-pages` 分支。
 4. 到仓库 **Settings → Pages → Build and deployment**，Source 选择 **Deploy from a branch**，Branch 选 `gh-pages` / `/ (root)`，保存。
-5. 访问 `https://tekikoyo.github.io`。
+5. 访问 `https://itsusheng.github.io`。
 
 > 如果推送时没有弹出登录窗口，可改用 Personal Access Token：GitHub → Settings → Developer settings → Personal access tokens → Tokens (classic)，勾选 `repo` 权限生成，推送时密码框粘贴 token（不是账号密码）。
 
@@ -67,6 +67,6 @@ git push -u origin main
 |---|---|---|
 | `fatal: not a git repository: '...PortableGit'` | 有脚本设置了保留变量 GIT_DIR | 见坑 2，脚本已内置清除 |
 | `CONNECT tunnel failed 502` / `Could not resolve host` | 代理没开或端口不对 | 开科学上网工具，核对端口 7897 |
-| `Repository not found` | 远程地址/仓库名不对 | `git remote -v` 核对是否为 `tekikoyo/itsusheng.github.io` |
+| `Repository not found` | 远程地址/仓库名不对 | `git remote -v` 核对是否为 `itsusheng/itsusheng.github.io` |
 | `nothing to commit` | 没有新改动（不是错误） | 属正常，不影响 push，可忽略 |
 | 卡住不动 | 在等 GitHub 授权窗口 | 看任务栏，点开窗口授权一次 |

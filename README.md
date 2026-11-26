@@ -10,25 +10,21 @@ npm run server       # 本地预览 http://localhost:4000
 npm run build        # 生成静态文件到 public/
 ```
 
-## 日常发布流程（每天用这个）
+## 日常发布流程（每天用这个，傻瓜式）
 
-1. **写文章**：在项目目录执行
-   ```bash
-   npx hexo new "文章标题"
-   ```
-   编辑 `source/_posts/文章标题.md`，开头有 `title/date/tags/categories` 等字段，正文用 Markdown 写。
+桌面上有两个图标，日常更新只用它们：
 
-2. **本地预览**（可选）：
-   ```bash
-   npx hexo server
-   ```
-   打开 `http://localhost:4000` 看效果，满意后按 `Ctrl+C` 停止。
+1. **双击桌面「写新文章.bat」** → 输入文章标题（比如"今天学了Python"）→ 回车。
+   脚本会自动在 `source/_posts/` 建好一个 `.md` 文件，标题、日期、标签、分类都填好，并自动用记事本打开。
+2. **在记事本里写正文**（最上面 `---` 之间的是文章信息，别乱动），写完按 `Ctrl+S` 保存，关掉记事本。
+3. **双击桌面「一键发布博客.bat」** → 出现 `SUCCESS!` 即成功。如弹出 GitHub 登录窗口，点开授权一次即可。
+4. **等 1–2 分钟**，刷新 `https://tekikoyo.github.io/itsusheng.github.io/` 就能看到新文章。
 
-3. **一键发布**：双击项目根目录的 **`publish.bat`**，它会自动提交并把代码推到 GitHub。推送时如弹出 GitHub 登录窗口，授权一次即可（之后记住）。
-
-4. **等 1–2 分钟**，访问 `https://tekikoyo.github.io/itsusheng.github.io/` 就能看到新文章。构建和部署由 GitHub Actions 自动完成，无需手动 `hexo g` 或 `hexo d`。
-
-> 注意：脚本里固定走了本机代理 `127.0.0.1:7897`（你的科学上网工具），用脚本前请确保代理已开启。若代理端口变了，用记事本打开 `publish.bat` 修改里面的 `7897`。
+> **这个博客没有网页后台**（不像 WordPress 那样登录网址写文章）。更新内容就是改 `source/_posts/` 里的 `.md` 文件，再通过脚本传上 GitHub，全程在电脑上完成。
+>
+> 注意：发布脚本固定走本机代理 `127.0.0.1:7897`（科学上网工具），用前请先开启；端口变了用记事本改 `publish.bat` 里的 `7897`。
+>
+> 命令行老手也可以不用脚本：`npx hexo new "标题"` 建文章，`npx hexo server` 本地预览 `http://localhost:4000/itsusheng.github.io/`。构建部署由 GitHub Actions 自动完成，无需手动 `hexo g`/`hexo d`。
 
 ## 手动发布（不用脚本时）
 

@@ -10,9 +10,9 @@ echo  ==================================================
 echo.
 
 set "NODE_DIR=C:\Users\zhaihaoyu\.workbuddy\binaries\node\versions\22.22.2-6"
-set "GIT_DIR=C:\Users\zhaihaoyu\AppData\Local\Programs\WorkBuddy\resources\vendor\PortableGit"
-set "GIT_CMD=%GIT_DIR%\cmd"
-set "GIT_BIN=%GIT_DIR%\mingw64\bin"
+set "PGROOT=C:\Users\zhaihaoyu\AppData\Local\Programs\WorkBuddy\resources\vendor\PortableGit"
+set "GIT_CMD=%PGROOT%\cmd"
+set "GIT_BIN=%PGROOT%\mingw64\bin"
 set "GIT_EXE=%GIT_CMD%\git.exe"
 set "PROXY=http://127.0.0.1:7897"
 set "BLOG_DIR=C:\Users\zhaihaoyu\WorkBuddy\2026-11-25-15-02-10\hexo-blog"

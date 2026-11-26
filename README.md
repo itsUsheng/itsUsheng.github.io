@@ -37,17 +37,18 @@ git push origin main
 
 ## 部署上线
 
-1. 仓库：`itsusheng/itsusheng.github.io`（Public，用户主页仓库）。账号改名 tekikoyo → itsusheng 后，原仓库 `itsusheng.github.io` 自动成为用户主页仓库，网址即 `https://itsusheng.github.io`。
-2. 在本目录执行，推送时弹出的登录窗口用 GitHub 账号授权即可（凭据管理器已配置好，不用手动建 token）：
+1. 账号：`tekikoyo`（其显示名是 Usheng）。`usheng` 和 `teki` 已被他人占用、GitHub 不释放，故采用 `itsusheng`（空闲可用）。
+2. 把账号名从 `tekikoyo` 改成 `itsusheng`（GitHub → Settings → Account → Username → 改成 `itsusheng` → Save）。仓库名 `itsusheng.github.io` 不用动，会自动跟着账号走，并自动成为用户主页仓库，网址即 `https://itsusheng.github.io`。
+3. 改名后在本目录执行，更新远程地址并推送（GitHub 会自动重定向旧地址，但建议更新成新地址）：
 
 ```bash
 git remote set-url origin https://github.com/itsusheng/itsusheng.github.io.git
 git push -u origin main
 ```
 
-3. 推送后 GitHub Actions 会自动构建并部署到 `gh-pages` 分支。
-4. 到仓库 **Settings → Pages → Build and deployment**，Source 选择 **Deploy from a branch**，Branch 选 `gh-pages` / `/ (root)`，保存。
-5. 访问 `https://itsusheng.github.io`。
+4. 推送后 GitHub Actions 会自动构建并部署到 `gh-pages` 分支。
+5. 到仓库 **Settings → Pages → Build and deployment**，Source 选择 **Deploy from a branch**，Branch 选 `gh-pages` / `/ (root)`，保存。
+6. 访问 `https://itsusheng.github.io`。
 
 > 如果推送时没有弹出登录窗口，可改用 Personal Access Token：GitHub → Settings → Developer settings → Personal access tokens → Tokens (classic)，勾选 `repo` 权限生成，推送时密码框粘贴 token（不是账号密码）。
 

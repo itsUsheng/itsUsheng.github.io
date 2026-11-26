@@ -290,7 +290,7 @@ aside:
       enable: true
       icon: fab fa-github
       text: Follow Me
-      link: https://github.com/tekikoyo
+      link: https://github.com/itsusheng
   card_announcement:
     enable: true
     content: 如何稷下听星汉，自古长安费少年。

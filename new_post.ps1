@@ -15,6 +15,19 @@ if ([string]::IsNullOrWhiteSpace($title)) {
     exit 1
 }
 
+# Choose category
+Write-Host ''
+Write-Host '请选择分类：'
+Write-Host '  1. 作为评测者'
+Write-Host '  2. 作为程序员'
+Write-Host '  3. 工作日记'
+$choice = Read-Host '输入 1/2/3（直接回车默认 3 工作日记）'
+switch ($choice) {
+    '1' { $category = '作为评测者' }
+    '2' { $category = '作为程序员' }
+    default { $category = '工作日记' }
+}
+
 $safeName = $title -replace '[\\/:*?"<>|]', '-'
 $date = Get-Date -Format 'yyyy-MM-dd HH:mm:ss'
 $fileName = "$safeName.md"
@@ -33,7 +46,7 @@ date: $date
 tags:
   - 学习笔记
 categories:
-  - 随笔
+  - $category
 ---
 
 在这里写正文……
